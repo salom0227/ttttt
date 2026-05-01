@@ -18,11 +18,16 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
       - name: Prepare web files
         run: |
-          mkdir www
+          mkdir -p www
           cp index.html app.js style.css www/
-          # Copy images if any exist
           cp *.png www/ 2>/dev/null || true
           cp *.jpg www/ 2>/dev/null || true
 
@@ -41,13 +46,13 @@ jobs:
           npx cap add android
           # Set the server URL to point to GitHub Pages for live updates
           sed -i 's|"webDir": "www"|"webDir": "www", "server": { "url": "https://salom0227.github.io/ttttt/", "cleartext": true }|' capacitor.config.json
-          npx cap copy
+          npx cap sync android
 
       - name: Build Android APK
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --no-daemon
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
