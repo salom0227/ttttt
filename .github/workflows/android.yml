@@ -1,8 +1,11 @@
-name: Build Android APK
+name: Build and Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -10,27 +13,35 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: set up JDK 11
-        uses: actions/setup-java@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
-          java-version: '11'
-          distribution: 'adopt'
+          node-version: '16'
 
-      - name: Initialize Capacitor
+      - name: Install Dependencies
+        run: npm install @capacitor/core @capacitor/cli @capacitor/android
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: .
+
+      - name: Initialize Capacitor for Android
         run: |
-          npm init -y
-          npm install @capacitor/core @capacitor/cli @capacitor/android
           npx cap init "HamkorBank" "com.hamkor.app" --web-dir .
           npx cap add android
+          # Set the server URL to point to GitHub Pages for live updates
+          sed -i 's|"webDir": "."|"webDir": ".", "server": { "url": "https://salom0227.github.io/ttttt/", "cleartext": true }|' capacitor.config.json
           npx cap copy
 
-      - name: Build with Gradle
+      - name: Build Android APK
         run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
 
-      - name: Upload APK
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v2
         with:
           name: app-debug
