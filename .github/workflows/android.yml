@@ -48,6 +48,11 @@ jobs:
           sed -i 's|"webDir": "www"|"webDir": "www", "server": { "url": "https://salom0227.github.io/ttttt/", "cleartext": true }|' capacitor.config.json
           npx cap sync android
 
+      - name: Fix Kotlin Duplicate Classes
+        run: |
+          # Add exclusion rule to avoid Kotlin duplicate class errors
+          echo 'configurations.all { resolutionStrategy { exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk7"; exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk8" } }' >> android/app/build.gradle
+
       - name: Build Android APK
         run: |
           cd android
