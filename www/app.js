@@ -177,7 +177,17 @@ function processTransfer() {
         const transId = generateUUID();
 
         // Update Receipt
-        document.getElementById('rec-amount').innerText = amount.toLocaleString('uz-UZ');
+        document.getElementById('rec-amount').innerText = amount.toLocaleString('uz-UZ').replace(/,/g, ' ');
+        document.getElementById('rec-recipient-name').innerText = document.getElementById('target-name').innerText;
+        
+        // Format card number with stars for the receipt (e.g., 986009******0311)
+        const rawCard = document.getElementById('target-card').innerText.replace(/\s+/g, '');
+        let formattedCard = rawCard;
+        if (rawCard.length >= 16) {
+            formattedCard = rawCard.substring(0, 6) + "******" + rawCard.substring(12);
+        }
+        document.getElementById('rec-recipient-card').innerText = formattedCard;
+        
         document.getElementById('rec-date').innerText = dateStr;
         document.getElementById('rec-id').innerText = transId;
 
