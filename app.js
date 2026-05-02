@@ -176,20 +176,25 @@ function processTransfer() {
         const dateStr = `${now.getDate().toString().padStart(2, '0')}.${(now.getMonth()+1).toString().padStart(2, '0')}.${now.getFullYear()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
         const transId = generateUUID();
 
-        // Update Receipt
-        document.getElementById('rec-amount').innerText = amount.toLocaleString('uz-UZ').replace(/,/g, ' ');
-        document.getElementById('rec-recipient-name').innerText = document.getElementById('target-name').innerText;
+        // Update Receipt safely
+        const setEl = (id, val) => {
+            const el = document.getElementById(id);
+            if (el) el.innerText = val;
+        };
+
+        setEl('rec-amount', amount.toLocaleString('uz-UZ').replace(/,/g, ' '));
+        setEl('rec-recipient-name', document.getElementById('target-name').innerText);
         
-        // Format card number with stars for the receipt (e.g., 986009******0311)
+        // Format card number with stars for the receipt
         const rawCard = document.getElementById('target-card').innerText.replace(/\s+/g, '');
         let formattedCard = rawCard;
         if (rawCard.length >= 16) {
             formattedCard = rawCard.substring(0, 6) + "******" + rawCard.substring(12);
         }
-        document.getElementById('rec-recipient-card').innerText = formattedCard;
+        setEl('rec-recipient-card', formattedCard);
         
-        document.getElementById('rec-date').innerText = dateStr;
-        document.getElementById('rec-id').innerText = transId;
+        setEl('rec-date', dateStr);
+        setEl('rec-id', transId);
 
         // Add to history
         history.unshift({
@@ -203,7 +208,7 @@ function processTransfer() {
         document.getElementById('loader').style.display = 'none';
         updateUI();
         document.getElementById('success-overlay').style.display = 'flex';
-    }, 2500);
+    }, 1500);
 }
 
 // Card Number Formatting
