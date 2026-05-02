@@ -115,12 +115,22 @@
 
             <div class="section-title">Saqlanganlar</div>
             <div class="history-list">
-                <div class="history-item" onclick="selectRecipient('XALIMJONOV S.', '5614 68** **** 0512')">
+                <div class="history-item" onclick="selectRecipient('SHOMUROD S.', '9860 09** **** 0311')">
                     <div class="item-left">
-                        <div class="item-icon icon-transfer">HX</div>
+                        <div class="item-icon icon-transfer">SH</div>
                         <div class="item-info">
-                            <h4>XALIMJONOV S.</h4>
-                            <p>5614 68** **** 0512</p>
+                            <h4>SHOMUROD S.</h4>
+                            <p>9860 09** **** 0311</p>
+                        </div>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+                </div>
+                <div class="history-item" onclick="selectRecipient('MIRZAMURODOV M.', '5614 68** **** 4521')">
+                    <div class="item-left">
+                        <div class="item-icon icon-transfer">MM</div>
+                        <div class="item-info">
+                            <h4>MIRZAMURODOV M.</h4>
+                            <p>5614 68** **** 4521</p>
                         </div>
                     </div>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
@@ -171,9 +181,9 @@
                         <span style="font-size: 1.8rem; font-weight: 700; color: #004D33; font-family: sans-serif; letter-spacing: -1px;">Hamkor Bank</span>
                     </div>
 
-                    <!-- Compact Amount -->
-                    <div style="width:100%; text-align:center; margin-bottom: 2px;">
-                        <span style="font-size: 2.2rem; font-weight: 800; color: #111827; font-family: sans-serif;">25 000</span>
+                    <!-- Compact Amount - Explicitly centered with flex -->
+                    <div style="width:100%; display: flex; justify-content: center; align-items: baseline; gap: 8px; margin-bottom: 2px;">
+                        <span id="rec-amount" style="font-size: 2.2rem; font-weight: 800; color: #111827; font-family: sans-serif;">20 000</span>
                         <span style="font-size: 1.2rem; color: #111827; font-weight: 500;">so'm</span>
                     </div>
                     <!-- Status -->
@@ -186,27 +196,31 @@
                             <span class="value" style="font-weight: 700; font-size: 0.9rem;">Kartaga o'tkazma</span>
                         </div>
                         <div class="detail-row" style="padding: 14px 0; border-bottom: 0.5px solid #F0F0F0;">
-                            <span class="label" style="color: #888; font-size: 0.85rem;">Yuboruvchi:</span>
-                            <span class="value" id="rec-sender-name" style="font-weight: 700; font-size: 0.9rem;">SHOXZOD QALANDAROV</span>
+                            <span class="label" style="color: #888; font-size: 0.85rem;">Xizmat nomi:</span>
+                            <span class="value" style="font-weight: 700; font-size: 0.9rem;">O'tkazma</span>
                         </div>
                         <div class="detail-row" style="padding: 14px 0; border-bottom: 0.5px solid #F0F0F0;">
-                            <span class="label" style="color: #888; font-size: 0.85rem;">Manba:</span>
-                            <span class="value" style="font-weight: 700; font-size: 0.9rem;">9860 16.. .... 8994</span>
+                            <span class="label" style="color: #888; font-size: 0.85rem;">Yuboruvchining ismi:</span>
+                            <span class="value" style="font-weight: 700; font-size: 0.9rem;">SHOXZOD Q.</span>
+                        </div>
+                        <div class="detail-row" style="padding: 14px 0; border-bottom: 0.5px solid #F0F0F0;">
+                            <span class="label" style="color: #888; font-size: 0.85rem;">Yuboruvchi:</span>
+                            <span class="value" style="font-weight: 700; font-size: 0.9rem;">986016******8994</span>
+                        </div>
+                        <div class="detail-row" style="padding: 14px 0; border-bottom: 0.5px solid #F0F0F0;">
+                            <span class="label" style="color: #888; font-size: 0.85rem;">Qabul qiluvchining ismi:</span>
+                            <span class="value" id="rec-recipient-name" style="font-weight: 700; font-size: 0.9rem;">SHOMUROD S.</span>
                         </div>
                         <div class="detail-row" style="padding: 14px 0; border-bottom: 0.5px solid #F0F0F0;">
                             <span class="label" style="color: #888; font-size: 0.85rem;">Qabul qiluvchi:</span>
-                            <span class="value" id="rec-recipient-name" style="font-weight: 700; font-size: 0.9rem;">XALIMJONOV S.</span>
+                            <span class="value" id="rec-recipient-card" style="font-weight: 700; font-size: 0.9rem;">986009******0311</span>
                         </div>
                         <div class="detail-row" style="padding: 14px 0; border-bottom: 0.5px solid #F0F0F0;">
-                            <span class="label" style="color: #888; font-size: 0.85rem;">Qabul qiluvchining kartasi:</span>
-                            <span class="value" style="font-weight: 700; font-size: 0.9rem;">5614 68.. .... 0512</span>
+                            <span class="label" style="color: #888; font-size: 0.85rem;">Komissiya:</span>
+                            <span class="value" style="font-weight: 700; font-size: 0.9rem;">0.0</span>
                         </div>
                         <div class="detail-row" style="padding: 14px 0; border-bottom: 0.5px solid #F0F0F0;">
-                            <span class="label" style="color: #888; font-size: 0.85rem;">Komissiya summasi:</span>
-                            <span class="value" style="font-weight: 700; font-size: 0.9rem;">0 so'm</span>
-                        </div>
-                        <div class="detail-row" style="padding: 14px 0; border-bottom: 0.5px solid #F0F0F0;">
-                            <span class="label" style="color: #888; font-size: 0.85rem;">Tranzaksiyaning IDsi:</span>
+                            <span class="label" style="color: #888; font-size: 0.85rem;">Tranzaksiya IDsi:</span>
                             <span class="value" id="rec-id" style="font-weight: 700; font-size: 0.75rem; max-width: 55%; line-height: 1.2;">...</span>
                         </div>
                         <div class="detail-row" style="padding: 14px 0; border: none;">
