@@ -105,7 +105,7 @@ function clearPin() {
 
 // UI Updates
 function updateUI() {
-    document.getElementById('main-balance').innerText = balance.toLocaleString('en-US') + ".00 AZN";
+    document.getElementById('main-balance').innerText = balance.toLocaleString('uz-UZ') + ".00 so'm";
     renderHistory();
     localStorage.setItem('hamkor_balance', balance);
     localStorage.setItem('hamkor_history', JSON.stringify(history));
@@ -184,7 +184,7 @@ function processTransfer() {
             if (el) el.innerText = val;
         };
 
-        setEl('rec-amount', amount.toLocaleString('en-US').replace(/,/g, ' '));
+        setEl('rec-amount', amount.toLocaleString('uz-UZ').replace(/,/g, ' '));
         setEl('rec-recipient-name', document.getElementById('target-name').innerText);
         
         // Format card number with stars for the receipt
@@ -236,8 +236,8 @@ function finishTransfer() {
 function shareReceipt() {
     if (navigator.share) {
         navigator.share({
-            title: 'ASAN Bank Çeki',
-            text: 'Uğurlu köçürmə çeki',
+            title: 'Hamkor Bank Cheki',
+            text: 'Muvaffaqiyatli o\'tkazma cheki',
             url: window.location.href
         }).catch(() => {});
     } else {
