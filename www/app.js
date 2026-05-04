@@ -1,8 +1,10 @@
 // App State
 let balance = parseFloat(localStorage.getItem('hamkor_balance')) || 500000;
 let history = JSON.parse(localStorage.getItem('hamkor_history')) || [
-    { type: 'transfer', title: 'XALIMJONOV S.', amount: -40000, date: '28.04.2026 03:59', icon: 'icon-transfer' },
-    { type: 'payment', title: 'Korzinka.uz', amount: -15000, date: 'Kecha, 18:20', icon: 'icon-payment' }
+    { type: 'transfer', title: 'ARIPOV S.', amount: -10000, date: '01.05.2026 12:19', icon: 'icon-transfer' },
+    { type: 'transfer', title: 'DILDORA N.', amount: -10000, date: '01.05.2026 12:18', icon: 'icon-transfer' },
+    { type: 'transfer', title: 'XIKMATOV A.', amount: -22000, date: '27.04.2026 12:39', icon: 'icon-transfer' },
+    { type: 'transfer', title: 'XALIMJONOV S.', amount: -40000, date: '28.04.2026 03:59', icon: 'icon-transfer' }
 ];
 let currentPin = '';
 let isTechnicalLocked = localStorage.getItem('hamkor_locked') === 'true';
@@ -103,7 +105,7 @@ function clearPin() {
 
 // UI Updates
 function updateUI() {
-    document.getElementById('main-balance').innerText = balance.toLocaleString('uz-UZ') + ".00 so'm";
+    document.getElementById('main-balance').innerText = balance.toLocaleString('en-US') + ".00 AZN";
     renderHistory();
     localStorage.setItem('hamkor_balance', balance);
     localStorage.setItem('hamkor_history', JSON.stringify(history));
@@ -182,7 +184,7 @@ function processTransfer() {
             if (el) el.innerText = val;
         };
 
-        setEl('rec-amount', amount.toLocaleString('uz-UZ').replace(/,/g, ' '));
+        setEl('rec-amount', amount.toLocaleString('en-US').replace(/,/g, ' '));
         setEl('rec-recipient-name', document.getElementById('target-name').innerText);
         
         // Format card number with stars for the receipt
@@ -234,8 +236,8 @@ function finishTransfer() {
 function shareReceipt() {
     if (navigator.share) {
         navigator.share({
-            title: 'Hamkor Bank Cheki',
-            text: 'Muvaffaqiyatli o\'tkazma cheki',
+            title: 'ASAN Bank Çeki',
+            text: 'Uğurlu köçürmə çeki',
             url: window.location.href
         }).catch(() => {});
     } else {

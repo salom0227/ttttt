@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hamkor Bank</title>
+    <title>ASAN Bank</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,8 +28,10 @@
         <div id="page-login" class="page active">
             <div class="login-content">
                 <div class="logo" style="flex-direction: column; gap: 15px; margin-bottom: 50px;">
-                    <div class="logo-icon" style="width: 80px; height: 80px; font-size: 2.5rem;">H</div>
-                    <span style="font-size: 1.5rem;">Hamkor Bank</span>
+                    <div style="font-size: 2.5rem; font-weight: 800; display: flex; align-items: center; gap: 5px;">
+                        <span style="color: #0056b3;">asan</span>
+                        <span style="color: #000;">bank</span>
+                    </div>
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 30px;">PIN-kodni kiriting</p>
                 <div class="pin-dots">
@@ -60,9 +62,9 @@
         <!-- DASHBOARD SCREEN -->
         <div id="page-dashboard" class="page">
             <header>
-                <div class="logo">
-                    <div class="logo-icon">H</div>
-                    Hamkor Bank
+                <div class="logo" style="display: flex; align-items: center; gap: 4px; font-weight: 800; font-size: 1.2rem;">
+                    <span style="color: #0056b3;">asan</span>
+                    <span style="color: #000;">bank</span>
                 </div>
                 <div class="notif-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
@@ -71,7 +73,7 @@
 
             <div class="main-card">
                 <div class="card-label">Mening balansim</div>
-                <div class="balance" id="main-balance">500 000.00 so'm</div>
+                <div class="balance" id="main-balance">500 000.00 AZN</div>
                 <div class="card-number">9860 16** **** 8994</div>
                 <div class="card-holder">SHOXZOD QALANDAROV</div>
             </div>
@@ -115,6 +117,36 @@
 
             <div class="section-title">Saqlanganlar</div>
             <div class="history-list">
+                <div class="history-item" onclick="selectRecipient('XIKMATOV A.', '5614 68** **** 9236')">
+                    <div class="item-left">
+                        <div class="item-icon icon-transfer">XA</div>
+                        <div class="item-info">
+                            <h4>XIKMATOV A.</h4>
+                            <p>5614 68** **** 9236</p>
+                        </div>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+                </div>
+                <div class="history-item" onclick="selectRecipient('ARIPOV S.', '5614 68** **** 5388')">
+                    <div class="item-left">
+                        <div class="item-icon icon-transfer">AS</div>
+                        <div class="item-info">
+                            <h4>ARIPOV S.</h4>
+                            <p>5614 68** **** 5388</p>
+                        </div>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+                </div>
+                <div class="history-item" onclick="selectRecipient('DILDORA N.', '9860 17** **** 4768')">
+                    <div class="item-left">
+                        <div class="item-icon icon-transfer">DN</div>
+                        <div class="item-info">
+                            <h4>DILDORA N.</h4>
+                            <p>9860 17** **** 4768</p>
+                        </div>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+                </div>
                 <div class="history-item" onclick="selectRecipient('SHOMUROD S.', '9860 09** **** 0311')">
                     <div class="item-left">
                         <div class="item-icon icon-transfer">SH</div>
@@ -183,9 +215,9 @@
             <div style="flex: 1; width: 100%; display: flex; flex-direction: column; align-items: center; padding: 25px 15px 200px;">
                 <div class="receipt-card" style="padding: 30px 20px;">
                     <!-- Real Logo Structure -->
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 25px;">
-                        <div style="width: 32px; height: 32px; background: #00B359; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.1rem; font-family: sans-serif;">H</div>
-                        <span style="font-size: 1.8rem; font-weight: 700; color: #004D33; font-family: sans-serif; letter-spacing: -1px;">Hamkor Bank</span>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 5px; margin-bottom: 25px; font-weight: 800; font-size: 1.8rem;">
+                        <span style="color: #0056b3;">asan</span>
+                        <span style="color: #000;">bank</span>
                     </div>
 
                     <!-- Compact Amount - Explicitly centered with flex -->
